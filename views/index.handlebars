@@ -3,21 +3,20 @@
 	<link rel="stylesheet" href="css/index.css"/>
 </head>
 <header class="container">
-	<section class="jumbotron">
+	<section id="headSection">
 		<div class="container">
 			<div class="row justify-content-center">
-				<h1>Pavo group web crawler</h1>
+				<h1>Web Crawler</h1>
 			</div>
 			<div class="row justify-content-center">
-				<p>This site will take the user input for the options below and create and interactive
-					<br />graph with nodes representing each URL visited during the crawl and
-					<br />directed edges indicating which page points to which other page.
+				<p>This site will take the user input for the options below and create and interactive graph with nodes representing each URL visited during the crawl and directed edges indicating which page points to which other page.
 				</p>
 			</div>
 		</div>
 	</section>
 </header>
-
+<br />
+<br />
 <section class="container" id="section">
 	<div class="row justify-content-center">
 		<form action="/results" method="post" id="searchForm">
@@ -29,17 +28,17 @@
 					<input id="page" type="url" name="page" size="30" maxlength="150" 
 						   title="The URL where you'd like the search to begin"/>
 				</label>
-				<label>
-					Number of links to search:
-					<input id="limit" type="number" name="limit" size="5" maxlength="5" min="0" step="1" max="" 
-						   title="The link depth (# of pages) to be searched"/>
-				</label>
 				<label>Search type:</label>
 				<select name="method" id="method" onchange="crawlDepth()"
-						title="Depth first: chooses random link from start page and continues to URL at random link and repeats until number of links to search is met. Breadth first chooses all links on the start page and follows them all to the depth specified  in number of links to search.">
+						title="Depth first: chooses random link from start page and continues to URL at random link and repeats until number of links to search is met or there are no more links left to search. Breadth first chooses all links on the start page and follows them all to the depth specified in number of links to search, while there are links to search.">
 					<option value="DFS">Depth First</option>
 					<option value="BFS">Breadth First</option>
 				</select>
+				<label>
+					Number of links to search:
+					<input id="limit" type="number" name="limit" size="4" maxlength="4" min="0" step="1" max="" 
+						   title="The link depth (# of pages) to be searched"/>
+				</label>
 				<label>
 					Optional keyword:
 					<input id="keyword" type="text" name="keyword" size="15" maxlength="30"
@@ -72,7 +71,7 @@
 					{{#each cookies}}
 					<!--<option value="{{this}}">{{this}}</option>-->
 					<!--<option value='{"page":"{{this.page}}","method":"{{this.method}}","limit":{{this.limit}},"keyword":"{{this.keyword}}"}'>{{this.page}} - {{this.keyword}}</option>-->
-					<option value='{"page":"{{this.page}}","method":"{{this.method}}","limit":{{this.limit}},"keyword":"{{this.keyword}}"}'>{{this.page}}, {{this.limit}}, {{this.method}}, "{{this.keyword}}"</option>
+					<option value='{"page":"{{this.page}}","method":"{{this.method}}","limit":{{this.limit}},"keyword":"{{this.keyword}}"}'>{{this.page}}, {{this.method}}, {{this.limit}}, "{{this.keyword}}"</option>
 					{{/each}}
 				</select>
 				<input name="submitButton" type="submit" value="Repeat search" />
@@ -80,9 +79,15 @@
 		</form>
 	</div>
 </section>
-
-<br />
-
+<div>
+	<footer class="container">
+		<div class="row justify-content-center">
+			<p id="creators">
+				Created by: Adam Brulotte, Tia Seibold, and Michael Sterritt
+			</p>
+		</div>
+	</footer>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>

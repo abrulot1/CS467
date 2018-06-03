@@ -1,6 +1,8 @@
-﻿/*body {
-	background-image: url(../images/DanaWeb.png);
-}*/
+﻿html {
+	position: relative;
+	min-height: 100%;
+}
+
 body{
 	background-image: url(../images/DanaWeb.png);
 	background-size: cover;
@@ -41,7 +43,35 @@ h1{
 	padding-bottom: 15px;
 }
 
-input[type=text]{
+/*input[type=text]{
 	border: 2px solid;
 	background-color: darkgray;
+}*/
+
+#headSection{
+	margin: auto;
+	background-color: darkgray;
+	border: 2px solid;
+	border-radius: 25px;
+	width: 50%;
+	text-align: center;
+}
+
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 40%;
+	text-align: center;
+	margin:auto;
+	left:0;
+	right:0;
+	
+}
+
+#creators{
+	background-color: darkgray;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
 }
