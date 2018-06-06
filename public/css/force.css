@@ -102,7 +102,7 @@ fieldset{
 	src: url("'../images/Hallowen Party St.ttf'");
 }
 
-h1 {
+#resultsTitle{
 	font-family: spiderText2;
 	font-size: 4em;
 }
