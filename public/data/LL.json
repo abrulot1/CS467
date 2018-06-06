@@ -1,0 +1,18 @@
+﻿{
+	"URLs": {
+		"0": {
+			"edges": [
+				"1"
+			],
+			"found": false,
+			"title": "title0"
+		},
+		"1": {
+			"edges": [],
+			"found": false,
+			"title": "title1"
+		}
+	},
+	"cookie": "graph 3",
+	"start": "0"
+}
