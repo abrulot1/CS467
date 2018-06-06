@@ -20,36 +20,43 @@
     <br />
     <br />
     <section class="container" id="section">
-        <div class="row justify-content-center">
+        <div  id="searchDiv">
             <form action="/results" method="get" id="searchForm">
-                <!-- change action to url of server -->
-                <fieldset>
-                    <legend>Create new search:</legend>
-                    <label>
-                        Starting webpage:
-                        <input id="page" type="url" name="page" size="30" maxlength="150"
-                               title="The URL where you'd like the search to begin" />
-                    </label>
-                    <label>Search type:</label>
-                    <select name="method" id="method" onchange="crawlDepth()"
-                            title="Depth first: chooses random link from start page and continues to URL at random link and repeats until number of links to search is met or there are no more links left to search. Breadth first chooses all links on the start page and follows them all to the depth specified in number of links to search, while there are links to search.">
-                        <option value="DFS">Depth First</option>
-                        <option value="BFS">Breadth First</option>
-                    </select>
-                    <label>
-                        Number of links to search:
-                        <input id="limit" type="number" name="limit" size="4" maxlength="4" min="0" step="1" max="999"
-                               title="The link depth (# of pages) to be searched" />
-                    </label>
-                    <label>
-                        Optional keyword:
-                        <input id="keyword" type="text" name="keyword" size="15" maxlength="30"
-                               title="This word is looked for in the visited pages, if found, the crawl will stop" />
-                    </label>
-                    <br />
+				<fieldset id="searchBundle">
+                    <legend id="searchLegend">Create New Search:</legend>
+					<div class="row justify-content-center">
+						<label>
+							Starting webpage:
+							<input id="page" type="url" name="page" size="30" maxlength="150"
+								   title="The URL where you'd like the search to begin" />
+						</label>
+					</div>
+					<div class="row justify-content-center">
+						<label>Search type:</label>
+						<select name="method" id="method" onchange="crawlDepth()"
+								title="Depth first: chooses random link from start page and continues to URL at random link and repeats until number of links to search is met or there are no more links left to search. Breadth first chooses all links on the start page and follows them all to the depth specified in number of links to search, while there are links to search.">
+							<option value="DFS">Depth First</option>
+							<option value="BFS">Breadth First</option>
+						</select>
+					</div>
+					<div class="row justify-content-center">
+						<label>
+							Number of links to search:
+							<input id="limit" type="number" name="limit" size="4" maxlength="4" min="0" step="1" max="999"
+								   title="The link depth (# of pages) to be searched" />
+						</label>
+					</div>
+					<div class="row justify-content-center">
+						<label>
+							Optional keyword:
+							<input id="keyword" type="text" name="keyword" size="10" maxlength="30"
+								   title="This word is looked for in the visited pages, if found, the crawl will stop" />
+						</label>
+					</div>
                     <div class="row justify-content-center">
-                        <input name="submitButton" type="submit" value="Start the crawler" id="searchButton" />
+                        <input name="submitButton" type="submit" value="Start the Crawler" id="searchButton" />
                     </div>
+	
                     <script>
                         function crawlDepth() {
                             var linkMax = document.getElementById("method");
@@ -65,7 +72,7 @@
                     </script>
                 </fieldset>
             </form>
-            <form action="/results" method="get" id="repeatForm">
+            <form action="/results" method="get" id="repeatForm" class="row justify-content-center">
                 <fieldset>
                     <legend>Repeat Search:</legend>
                     <select name="cookies" title="Choose a past search from saved cookies">
@@ -74,7 +81,7 @@
 							<option value='{"page":"{{this.page}}","method":"{{this.method}}","limit":{{this.limit}},"keyword":"{{this.keyword}}"}'>{{this.page}}, {{this.method}}, {{this.limit}}, "{{this.keyword}}"</</option>
 						{{/each}}
                     </select>
-                    <input name="submitButton" type="submit" value="Repeat search" />
+                    <input name="submitButton" type="submit" value="Repeat Search" />
                 </fieldset>
             </form>
         </div>
