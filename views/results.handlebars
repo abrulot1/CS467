@@ -10,21 +10,26 @@
 <body>
 	<header class="container" id="headTitle">
 			<div class="container row justify-content-center">
-					<h1 id="resultsTitle">Results from the web crawler</h1>
+					<h1>Results from the Web Crawler</h1>
 			</div>
 	</header>
 	<br />
 	<br />
 	<br />
 	<section class="container" id="graphContainer">
-		<div class="row justify-content-center">
-			<p id="testObj">{{jsonObj}}</p>
+        <div id="loader">
+            <div class="loader"></div>
+            <h4 class="row justify-content-center">Loading, this may take a while...</h4>
+        </div>
+        
+		<div id="graph" class="row justify-content-center" style="display: none">
 			<svg width="800" height="600" id="svgSection"></svg>
 			<script src="https://d3js.org/d3.v4.min.js"></script>
-			<script id="script" type="text/javascript" src="js/newForce.js" jsonObj="{{jsonObj}}"></script>
+			<script id="script" type="text/javascript" async src="js/newForce.js" jsonObj="{{jsonObj}}"></script>
+
 			<div>
 				<br />
-				<fieldset class="scheduler-border" id="graphKey" style="background-color: darkgray">
+				<fieldset class="scheduler-border" id="graphKey" style="background-color: transparent">
 					<legend class="scheduler-border">Graph Key:</legend>
 						<ul>
 							<li>A <span style="color: blue">Blue</span> node indicates the starting URL.</li> 
@@ -35,11 +40,14 @@
 							<li>Scroll the mouse to zoom in and out of the graph</li>
 							<li>Hover over nodes to reveal the corresponding URL and site title</li>
 							<li>Double click a node to open it's respective webpage in a browser tab</li>
-							<li>*NOTE* If you don't see your graph, use zoom to find it</li>
 						</ul>
 				</fieldset>
 			</div>
 		</div>
+        <div id="error" style="display: none">
+            <div id="error"></div>
+            <br />
+        </div>
 		<div class="row justify-content-center">
 			<form action="../">
 				<input type="submit" value="Go To Homepage" />
@@ -50,9 +58,11 @@
 		<br/>
 	</section>
 
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

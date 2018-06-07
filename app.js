@@ -18,6 +18,7 @@ app.set("view engine", "handlebars");
 app.set("port", 8080);
 
 app.get("/results", function (req, res) {
+    //create payload from inputs and add cookie if an identical one doesn't already exist
     if (req.query.submitButton == 'Start the crawler') {
         var payload = { page: null, method: null, limit: 2, keyword: null };
         payload.page = req.query.page;
@@ -34,8 +35,16 @@ app.get("/results", function (req, res) {
         else
             arr = [];
 
+        //check if the cookie is already in the array
+        var identical = false;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] == payloadJson)
+                identical = true;
+        }
+
         //add new search to the array
-        arr.push(payloadJson);
+        if (!identical)
+            arr.push(payloadJson);
 
         //insert the array into a cookie
         setCookie('searches', JSON.stringify(arr), { path: '/', res: res });
@@ -48,20 +57,7 @@ app.get("/results", function (req, res) {
 		}
     }
 
-    console.log(payloadJson);
-    //send json to server
-	var request = new XMLHttpRequest();
-	request.open('POST', 'https://webcrawler-201200.appspot.com', false);
-	request.setRequestHeader('Content-Type', 'application/json');
-	request.send(payloadJson);
-	var response = JSON.parse(request.responseText);
-	if (request.status == 200) {
-		res.render("results", { "jsonObj": JSON.stringify(response) });
-	} else {
-		alert('Error!');
-	}
-
-
+    res.render("results", { "jsonObj": payloadJson });
 });
 
 app.get("/", function (req, res) {
